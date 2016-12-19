@@ -1,0 +1,69 @@
+<DOCTYPE=html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
+	<title>African Presidents: The biggest database of all african presidents</title>
+	<style type="text/css">
+		body {
+			font-family: Arial;
+		}
+		h1 {
+			margin-left: 50px;
+			margin-right: 50px;
+		}
+		.page-body {
+			margin: 10px 40px 10px 40px;
+		}
+		img {
+			margin: 5px 40px 5px 40px;
+		}
+		.quotes {
+			padding: 10px;
+			margin-left: 5px;
+			border: 1px solid black;
+			float: left;
+			width: 49%;
+		}
+		.quiz {
+			padding: 10px;
+			margin-right: 5px;
+			border: 1px solid black;
+			float: right;
+			width: 49%;
+		}
+		.footer {
+			margin: 15px 50px 5px 50px;
+			clear: both;
+		}
+	</style>	
+</head>
+<body>
+<h1>African Presidents:</h1>
+<img src="http://www.africaranking.com/wp-content/uploads/2014/12/Richest-African-Presidents-RichestLifestyle.com_.jpg">
+<div class="page-body">
+	<div class="quotes">
+		<h2>Here are some quotes of the day:</h2>
+			<ul>
+				<li>
+					<h3>Robert Mugabe</h3>
+					<p>'Sometimes you look back at girls you spent money on rather than send it to your mum & you realise witchcraft is real'</p>	
+				</li>	
+			</ul>
+	</div>
+	<div class="quiz">
+		<h2>Would you like to try some of these quizzes?</h2>
+	</div>
+</div>
+<div class="footer">
+	<!-- Create a link to the about page:
+			 - with the '=' sign we can render what is the output of the  %, > , signs:
+			 - without it we simply have plain ruby.
+			 - Say we also dont want to use the 'path' path in our url:
+	 -->
+	<%= link_to 'About', about_path %>
+</div>	
+
+
+</body>	
+</html>	
