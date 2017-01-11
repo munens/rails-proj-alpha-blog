@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'about', to: 'pages#about'
 
+  # in order to get all paths existing for articles i.e. show, post, put, index, delete, show paths:
+  # - test with: rake routes
+  resources :articles
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
