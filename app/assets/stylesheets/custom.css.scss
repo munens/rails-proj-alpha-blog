@@ -1,2 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+.listing {
+    list-style: none;
+    padding-left: 0;
+}
+
+.row-center {
+    margin: auto 0px;
+}
