@@ -12,6 +12,12 @@
 
 <h4 align="center"><%= @user.username %>'s articles: </h4>
 
-<%= render 'articles/article', obj: @user.articles %>
+<!-- we want to paginate the users articles, how do we do this: -->
+<div class="center">
+    <%= will_paginate @user_articles %>
+</div>
+<!-- for pagination to work then we have to use the same variable for our render method that we defined in the controller for the uers articles.
+     the will_paginate tag has to have the context in which the objects we want to be paginated for it to work properly. -->
+<%= render 'articles/article', obj: @user_articles %>
 
 

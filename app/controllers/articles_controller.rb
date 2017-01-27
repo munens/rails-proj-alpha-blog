@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
 
 	def index
-		@articles = Article.all
+		# instead of Artice.all like we had initially, here we are using the pagination gem to create pagination
+		# to all available articles:
+		@articles = Article.paginate(page: params[:page], per_page: 3)
 	end
 
 	def new

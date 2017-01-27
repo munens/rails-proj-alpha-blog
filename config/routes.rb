@@ -18,6 +18,11 @@ Rails.application.routes.draw do
   # - test with: rake routes
   resources :articles
 
+  # when creating user sessions:
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
   get 'signup', to: 'users#new'
   # post 'users' to 'users#create' 
   resources :users, except: [:new]

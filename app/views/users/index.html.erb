@@ -1,4 +1,10 @@
+<%= render 'nav' %>
+
 <h1 align="center">All bloggers</h1>
+
+<!-- in order to create pagination with the gems installed and this being showed in the controller: -->
+<%= will_paginate %>
+
 
 <% @users.each do |user| %>
     <div align="center">
@@ -17,3 +23,6 @@
         </ul>
     </div>
 <% end %>
+
+<!-- in order to create pagination with the gems installed and this being showed in the controller: -->
+<%= will_paginate %>
