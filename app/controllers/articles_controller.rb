@@ -69,7 +69,7 @@ class ArticlesController < ApplicationController
 		end
 		
 		def article_params
-			params.require(:article).permit(:title, :description)
+			params.require(:article).permit(:title, :description, category_ids: [])
 		end
 
 		# in order to require that the same user that can access the articles is the same person that is logged in:

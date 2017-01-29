@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   # in order to get all paths existing for articles i.e. show, post, put, index, delete, show paths:
   # - test with: rake routes
   resources :articles
+  resources :categories, except: [:destroy]
 
   # when creating user sessions:
   get 'login', to: 'sessions#new'

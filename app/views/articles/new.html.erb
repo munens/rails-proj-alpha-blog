@@ -76,9 +76,18 @@
 		<br/>
 		<%= form.text_area :description %>
 	</p>
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-8">
+        <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+          <% cb.label(class: "checkbox-inline input_checkbox") {cb.checkbox(class: "checkbox") + cb.text} %>
+        <% end %>
+      </div>
+    </div>
 	<p>
 		<%= form.submit %>
 	</p>
+
+
 
 <% end %>
 
