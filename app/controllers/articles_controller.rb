@@ -1,4 +1,8 @@
 class ArticlesController < ApplicationController
+	# the order of our before_action's matters. THey are called in the order they are executed.
+	before_action :set_article, only: [:edit, :update, :show, :destroy]
+	before_action :require_user, except: [:index, :show]
+	before_action :require_same_user, only: [:edit, :update, :destroy]
 
 	def index
 		# instead of Artice.all like we had initially, here we are using the pagination gem to create pagination
@@ -20,7 +24,9 @@ class ArticlesController < ApplicationController
 		@article = Article.new(article_params)
 		
 		# short term fix that whenever a new article is created then the first user in the db is set as the person that created it.
-		@article.user = User.first
+		# @article.user = User.first
+		# Long term we want the article to reference the user that has logged in: we can therefore use our helper method.
+		@article.user = current_user
 		if @article.save
 			#create a flash notice to the user:
 			flash[:notice] = "article has been successfully added."
@@ -32,7 +38,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def update
-		@article = Article.find(params[:id])
+		# due to before action: @article = Article.find(params[:id])
 		if @article.update(article_params)
 			flash[:notice] = "Article has been successfully updated"
 			redirect_to article_path(@article)
@@ -42,24 +48,36 @@ class ArticlesController < ApplicationController
 	end
 
 	def edit
-		@article = Article.find(params[:id])
+		# due to before action: @article = Article.find(params[:id])
 	end
 
 	def show
-		@article = Article.find(params[:id])
+		# due to before action: @article = Article.find(params[:id])
 	end
 
 	def destroy
-		@article = Article.find(params[:id])
+		# due to before action: @article = Article.find(params[:id])
 		@article.destroy	
 		flash[:notice] = "Article has been destroyed"
 		redirect_to article_path
 	end
 
 	private
+
+		def set_article
+			@article = Article.find(params[:id])
+		end
 		
 		def article_params
 			params.require(:article).permit(:title, :description)
+		end
+
+		# in order to require that the same user that can access the articles is the same person that is logged in:
+		def require_same_user
+			if current_user != @article.user and !current_user.admin?
+				flash[:danger] = "You can only edit or delete your own articles"
+				redirect_to root_path
+			end
 		end
 
 end
